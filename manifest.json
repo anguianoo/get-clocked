@@ -1,0 +1,41 @@
+{
+  "manifest_version": 2,
+  "name": "Clock Bar",
+  "version": "1.1.0",
+  "description": "A draggable, customizable clock on every page: floating, top bar, bottom bar or side bar.",
+  "icons": {
+    "48": "icons/clock.svg",
+    "96": "icons/clock.svg"
+  },
+  "permissions": ["storage"],
+  "background": {
+    "scripts": ["defaults.js", "background.js"]
+  },
+  "browser_action": {
+    "default_icon": "icons/clock.svg",
+    "default_title": "Clock Bar settings"
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
+  "commands": {
+    "toggle-clock": {
+      "suggested_key": { "default": "Alt+Shift+K" },
+      "description": "Show or hide the clock"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["defaults.js", "content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "clockbar@example.com",
+      "strict_min_version": "91.0"
+    }
+  }
+}
