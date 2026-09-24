@@ -1,7 +1,7 @@
 # get-clocked
 firefox extension to display clock
 
-# How to add it to Firefox 
+# How to add it to Firefox (because I have not uploaded it to firefox extensions yet)
 1. Download clock-bar.zip and unzip it into a folder.
 2. In Firefox, type about:debugging#/runtime/this-firefox in the address bar and press Enter.
 3. Click Load Temporary Add-on….
