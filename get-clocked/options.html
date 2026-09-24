@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Get Clocked settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Get Clocked</h1>
+      <p class="lede">Changes save automatically and apply to every open tab.</p>
+    </header>
+
+    <!-- Live preview: a tiny mock browser page with the clock on it -->
+    <div class="preview" id="preview" aria-label="Preview">
+      <div class="page-lines" aria-hidden="true">
+        <span></span><span></span><span class="short"></span><span></span><span class="short"></span>
+      </div>
+      <div class="clock" id="preview-clock">
+        <span class="time"></span><span class="date"></span>
+      </div>
+    </div>
+
+    <form id="settings">
+      <section>
+        <h2>Style</h2>
+        <label class="row switch">
+          <span>Show the clock</span>
+          <input type="checkbox" name="enabled">
+        </label>
+        <label class="row">
+          <span>Style</span>
+          <select name="layout">
+            <option value="floating">Floating (drag it anywhere)</option>
+            <option value="top">Top bar</option>
+            <option value="bottom">Bottom bar</option>
+            <option value="left">Left side bar</option>
+            <option value="right">Right side bar</option>
+          </select>
+        </label>
+        <div class="row" data-for="floating">
+          <span>Position<small>Drag the clock on any page to move it.</small></span>
+          <button type="button" id="reset-pos">Reset position</button>
+        </div>
+        <label class="row" data-for="bar">
+          <span>Clock position in the bar</span>
+          <select name="align">
+            <option value="start">Start (left / top)</option>
+            <option value="center">Center</option>
+            <option value="end">End (right / bottom)</option>
+          </select>
+        </label>
+        <label class="row switch" data-for="bar">
+          <span>Move page content so the bar doesn't cover it<small>Sites with their own fixed headers may still overlap.</small></span>
+          <input type="checkbox" name="pushContent">
+        </label>
+      </section>
+
+      <section>
+        <h2>Time format</h2>
+        <label class="row switch">
+          <span>12-hour clock (AM/PM)</span>
+          <input type="checkbox" name="hour12">
+        </label>
+        <label class="row switch">
+          <span>Show seconds</span>
+          <input type="checkbox" name="showSeconds">
+        </label>
+        <label class="row switch">
+          <span>Show date</span>
+          <input type="checkbox" name="showDate">
+        </label>
+      </section>
+
+      <section>
+        <h2>Appearance</h2>
+        <label class="row">
+          <span>Font</span>
+          <select name="fontFamily">
+            <option value="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">System</option>
+            <option value="ui-monospace, 'SF Mono', Consolas, 'Liberation Mono', monospace">Monospace</option>
+            <option value="Georgia, 'Times New Roman', serif">Serif</option>
+            <option value="'Trebuchet MS', 'Segoe UI', sans-serif">Rounded</option>
+          </select>
+        </label>
+        <label class="row">
+          <span>Text size <output id="fontSize-out"></output></span>
+          <input type="range" name="fontSize" min="10" max="40" step="1">
+        </label>
+        <label class="row switch">
+          <span>Bold</span>
+          <input type="checkbox" name="bold">
+        </label>
+        <label class="row">
+          <span>Text color</span>
+          <input type="color" name="textColor">
+        </label>
+        <label class="row">
+          <span>Background color</span>
+          <input type="color" name="bgColor">
+        </label>
+        <label class="row">
+          <span>Background opacity <output id="opacity-out"></output></span>
+          <input type="range" name="opacity" min="0" max="100" step="5">
+        </label>
+      </section>
+
+      <footer>
+        <p class="hint">On any page, right-click the clock (or hover it and click the gear) for quick preferences. Press <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>K</kbd> to show or hide the clock everywhere.</p>
+        <button type="button" id="reset">Reset to defaults</button>
+        <p class="status" id="status" role="status" aria-live="polite"></p>
+      </footer>
+    </form>
+  </main>
+
+  <script src="defaults.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>
